@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smoke World — Vasco Da Gama, Goa</title>
+<meta name="description" content="Smoke World, Koshy Chamber, near Kadamba Bus Stand, Vasco Da Gama, Goa. Vapes, tobacco, hookah, chocolates and more. Open daily 8am–12am.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Yellowtail&family=Karla:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black: #0b0a09;
+    --black-2: #151310;
+    --black-3: #1f1c17;
+    --yellow: #f7d117;
+    --yellow-2: #ffe45e;
+    --yellow-soft: rgba(247,209,23,0.13);
+    --cream: #f6f1e6;
+    --ash: #a89f8f;
+    --ash-dim: #6f6858;
+    --line: rgba(246,241,230,0.12);
+    --radius: 4px;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin: 0;
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'Karla', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color: inherit; }
+  img{ max-width: 100%; display: block; }
+  .wrap{ max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+  .eyebrow{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    font-weight: 500;
+  }
+  h1,h2,h3{ margin:0; color: var(--cream); }
+
+  /* balloon strip - echoes the real shop's black & yellow balloon arches */
+  .balloons{
+    height: 14px;
+    background-image:
+      radial-gradient(circle 6px at 10px 7px, var(--yellow) 98%, transparent 100%),
+      radial-gradient(circle 6px at 30px 7px, var(--black-3) 98%, transparent 100%);
+    background-size: 40px 14px;
+    background-repeat: repeat-x;
+    opacity: 0.9;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(11,10,9,0.94);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 24px; gap: 20px; }
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .brand__mark{ width:38px; height:38px; flex-shrink:0; color: var(--yellow); }
+  .brand__text{
+    font-family: 'Yellowtail', cursive;
+    font-size: 26px;
+    line-height: 1;
+    color: var(--cream);
+    text-shadow: 0 0 10px rgba(247,209,23,0.45);
+  }
+  .nav__links{ display:flex; gap:26px; font-size:14px; font-weight:600; list-style:none; margin:0; padding:0; }
+  .nav__links a{ text-decoration:none; color:var(--ash); transition: color .2s ease; }
+  .nav__links a:hover, .nav__links a:focus-visible{ color: var(--yellow); }
+  .nav__cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background: var(--yellow); color:#171200; font-weight:700; font-size:13px;
+    text-decoration:none; padding:10px 16px; border-radius: var(--radius);
+    transition: filter .2s ease;
+  }
+  .nav__cta:hover, .nav__cta:focus-visible{ filter: brightness(1.08); }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position: relative;
+    padding: 64px 24px 60px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(247,209,23,0.10), transparent 55%),
+      var(--black);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .hero__mark{ width:64px; height:64px; margin: 0 auto 18px; color: var(--yellow); }
+  .hero .eyebrow{ display:block; margin-bottom: 14px; }
+  .hero h1{
+    font-family: 'Yellowtail', cursive;
+    font-size: clamp(52px, 10vw, 108px);
+    line-height: 0.9;
+    color: var(--cream);
+    text-shadow: 0 0 18px rgba(247,209,23,0.5), 0 0 46px rgba(247,209,23,0.18);
+  }
+  .hero__tagline{
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: clamp(16px, 2.6vw, 24px);
+    color: var(--yellow);
+    margin: 10px 0 22px;
+  }
+  .hero__tagline span{ color: var(--ash-dim); margin: 0 10px; }
+  .hero p.sub{
+    color: var(--ash);
+    max-width: 480px;
+    margin: 0 auto 30px;
+    font-size: 16px;
+  }
+  .hero__actions{ display:flex; justify-content:center; flex-wrap:wrap; gap:14px; margin-bottom: 26px; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:14px 22px; border-radius: var(--radius);
+    font-weight:700; font-size:14px; text-decoration:none; border:1px solid transparent;
+    transition: transform .15s ease, filter .2s ease;
+  }
+  .btn:hover{ transform: translateY(-1px); }
+  .btn--primary{ background: var(--yellow); color:#171200; }
+  .btn--primary:hover, .btn--primary:focus-visible{ filter: brightness(1.08); }
+  .btn--ghost{ border-color: var(--line); color: var(--cream); }
+  .btn--ghost:hover, .btn--ghost:focus-visible{ border-color: var(--yellow); color: var(--yellow); }
+
+  .age-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono', monospace; font-size:12px; color: var(--ash);
+    border:1px solid var(--line); padding:8px 12px; border-radius: var(--radius);
+  }
+  .age-badge b{ color: var(--yellow); font-size:13px; }
+
+  /* ---------- Marquee strip ---------- */
+  .strip{ border-bottom:1px solid var(--line); background: var(--black-2); overflow:hidden; white-space:nowrap; padding:14px 0; }
+  .strip__track{
+    display:inline-flex; gap:40px; animation: scroll 28s linear infinite;
+    font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:.05em; text-transform:uppercase; color: var(--ash);
+  }
+  .strip__track span{ color: var(--yellow); }
+  @keyframes scroll{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+  @media (prefers-reduced-motion: reduce){ .strip__track{ animation:none; } }
+
+  section{ padding: 72px 0; }
+  .section-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:36px; flex-wrap:wrap; }
+  .section-head h2{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:clamp(28px,4vw,40px); }
+  .section-head p{ color: var(--ash); max-width:420px; margin:0; font-size:15px; }
+
+  /* ---------- About + Ticket ---------- */
+  .about{ display:grid; grid-template-columns: 1.1fr 0.9fr; gap:48px; align-items:start; }
+  .about__text p{ color: var(--ash); font-size:16px; margin:0 0 16px; }
+  .about__text p:last-child{ margin-bottom:0; }
+  .about__text strong{ color: var(--cream); }
+  .about__text h2{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:clamp(26px,4vw,36px); margin-bottom:20px; }
+
+  .ticket{
+    background: var(--black-2); border:1px solid var(--line); border-radius:10px; position:relative; padding:28px 26px 24px;
+  }
+  .ticket::before, .ticket::after{
+    content:""; position:absolute; width:22px; height:22px; background: var(--black);
+    border:1px solid var(--line); border-radius:50%; top:50%; transform:translateY(-50%);
+  }
+  .ticket::before{ left:-11px; } .ticket::after{ right:-11px; }
+  .ticket__head{ display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px dashed var(--line); padding-bottom:16px; margin-bottom:18px; }
+  .ticket__head h3{ font-family:'Yellowtail', cursive; font-size:28px; color: var(--cream); }
+  .ticket__head span{ font-family:'JetBrains Mono', monospace; font-size:11px; color: var(--yellow); text-transform:uppercase; letter-spacing:.1em; }
+  .ticket dl{ margin:0; }
+  .ticket__row{ display:grid; grid-template-columns:92px 1fr; gap:14px; padding:12px 0; border-bottom:1px solid var(--line); }
+  .ticket__row:last-of-type{ border-bottom:none; }
+  .ticket__row dt{ font-family:'JetBrains Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color: var(--ash-dim); }
+  .ticket__row dd{ margin:0; font-size:14.5px; color: var(--cream); }
+  .ticket__row dd a{ text-decoration:none; color: var(--cream); }
+  .ticket__row dd a:hover{ color: var(--yellow); }
+  .ticket__foot{ margin-top:18px; padding-top:16px; border-top:1px dashed var(--line); display:flex; gap:10px; }
+  .ticket__foot .btn{ flex:1; justify-content:center; padding:12px 14px; font-size:13px; }
+
+  /* ---------- Gallery ---------- */
+  .gallery{ background: var(--black-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .gallery-grid{
+    display:grid; grid-template-columns: repeat(5, 1fr); gap:10px;
+  }
+  .gallery-grid figure{ margin:0; position:relative; border-radius:8px; overflow:hidden; aspect-ratio: 3/4; border:1px solid var(--line); }
+  .gallery-grid img{ width:100%; height:100%; object-fit:cover; transition: transform .4s ease; }
+  .gallery-grid figure:hover img{ transform: scale(1.06); }
+  .gallery-grid figcaption{
+    position:absolute; left:0; right:0; bottom:0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+    color: var(--yellow); font-family:'JetBrains Mono', monospace; font-size:10.5px;
+    letter-spacing:.05em; text-transform:uppercase; padding:16px 10px 10px;
+  }
+
+  /* ---------- Products ---------- */
+  .product-grid{
+    display:grid; grid-template-columns: repeat(5, 1fr); gap:1px;
+    background: var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden;
+  }
+  .product-card{ background: var(--black-2); padding:28px 20px; transition: background .2s ease; }
+  .product-card:hover{ background: var(--black-3); }
+  .product-card__icon{ width:36px; height:36px; margin-bottom:18px; color: var(--yellow); }
+  .product-card h3{ font-family:'Karla', sans-serif; font-weight:700; font-size:16px; margin-bottom:8px; }
+  .product-card p{ color: var(--ash); font-size:13.5px; margin:0; }
+
+  /* ---------- Map / Locate ---------- */
+  .locate{ display:grid; grid-template-columns: 0.85fr 1.15fr; gap:40px; align-items:stretch; }
+  .locate__info h2{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:clamp(26px,4vw,36px); margin-bottom:16px; }
+  .locate__info p{ color: var(--ash); margin:0 0 24px; max-width:380px; }
+  .locate__point{ display:flex; gap:14px; margin-bottom:18px; }
+  .locate__point svg{ flex-shrink:0; width:20px; height:20px; color: var(--yellow); margin-top:3px; }
+  .locate__point div{ font-size:14.5px; color: var(--cream); }
+  .locate__point small{ display:block; color: var(--ash-dim); font-family:'JetBrains Mono', monospace; font-size:11px; margin-top:3px; letter-spacing:.05em; }
+  .map-frame{ border-radius:10px; overflow:hidden; border:1px solid var(--line); min-height:340px; }
+  .map-frame iframe{ width:100%; height:100%; min-height:340px; border:0; filter: grayscale(0.4) contrast(1.05) brightness(0.95); }
+
+  /* ---------- Footer ---------- */
+  footer{ border-top:1px solid var(--line); padding:40px 0 0; }
+  .footer-grid{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; padding-bottom:24px; border-bottom:1px solid var(--line); }
+  .footer-brand{ font-family:'Yellowtail', cursive; font-size:28px; color: var(--cream); text-shadow: 0 0 10px rgba(247,209,23,0.4); }
+  .footer-contact{ font-size:14px; color: var(--ash); }
+  .footer-contact a{ color: var(--cream); text-decoration:none; }
+  .footer-note{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; padding:20px 0; font-family:'JetBrains Mono', monospace; font-size:11.5px; color: var(--ash-dim); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px){
+    .about, .locate{ grid-template-columns: 1fr; }
+    .product-grid{ grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid{ grid-template-columns: repeat(3, 1fr); }
+    .map-frame{ order:-1; }
+  }
+  @media (max-width: 640px){
+    .nav__links{ display:none; }
+    .hero{ padding:48px 20px 44px; }
+    .product-grid{ grid-template-columns: 1fr; }
+    .gallery-grid{ grid-template-columns: repeat(2, 1fr); }
+    section{ padding:52px 0; }
+    .ticket__row{ grid-template-columns:84px 1fr; }
+    .footer-grid{ flex-direction:column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="balloons" aria-hidden="true"></div>
+
+<header>
+  <nav class="nav wrap">
+    <a class="brand" href="#top">
+      <svg class="brand__mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M14 30c0-4 3-6 6-6 1-6 6-10 12-10s11 4 12 10c3 0 6 2 6 6 0 5-4 7-9 7H23c-5 0-9-2-9-7Z" stroke="currentColor" stroke-width="2.2"/>
+        <rect x="18" y="15" width="28" height="6" rx="1" stroke="currentColor" stroke-width="2.2"/>
+        <rect x="14" y="10" width="36" height="6" rx="1" stroke="currentColor" stroke-width="2.2"/>
+        <circle cx="25" cy="34" r="4" stroke="currentColor" stroke-width="2"/>
+        <circle cx="39" cy="34" r="4" stroke="currentColor" stroke-width="2"/>
+        <path d="M29 34h6" stroke="currentColor" stroke-width="2"/>
+        <path d="M20 44c2 3 5 4 12 4s10-1 12-4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span class="brand__text">Smoke World</span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav__cta" href="https://wa.me/917498695893" target="_blank" rel="noopener">WhatsApp Us</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <svg class="hero__mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M14 30c0-4 3-6 6-6 1-6 6-10 12-10s11 4 12 10c3 0 6 2 6 6 0 5-4 7-9 7H23c-5 0-9-2-9-7Z" stroke="currentColor" stroke-width="2.2"/>
+      <rect x="18" y="15" width="28" height="6" rx="1" stroke="currentColor" stroke-width="2.2"/>
+      <rect x="14" y="10" width="36" height="6" rx="1" stroke="currentColor" stroke-width="2.2"/>
+      <circle cx="25" cy="34" r="4" stroke="currentColor" stroke-width="2"/>
+      <circle cx="39" cy="34" r="4" stroke="currentColor" stroke-width="2"/>
+      <path d="M29 34h6" stroke="currentColor" stroke-width="2"/>
+      <path d="M20 44c2 3 5 4 12 4s10-1 12-4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+    </svg>
+    <span class="eyebrow">Vasco Da Gama · Goa</span>
+    <h1>Smoke World</h1>
+    <div class="hero__tagline">Smoke <span>•</span> Chocolates &amp; More</div>
+    <p class="sub">Koshy Chamber, near Kadamba Bus Stand — vapes, tobacco, hookah gear, chocolates and smoking accessories, stocked wide and open almost round the clock.</p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="https://www.google.com/maps?q=9RXC%2BVQ+Vasco+Da+Gama%2C+Goa" target="_blank" rel="noopener">Get Directions</a>
+      <a class="btn btn--ghost" href="tel:+917498695893">Call 074986 95893</a>
+    </div>
+    <span class="age-badge"><b>18+</b> Tobacco &amp; nicotine products sold responsibly. Valid ID may be requested.</span>
+  </section>
+
+  <div class="strip">
+    <div class="strip__track">
+      <span>Vapes &amp; E-Liquids</span>Tobacco &amp; Cigarettes<span>Hookah &amp; Shisha</span>Chocolates &amp; Munchies<span>Papers, Filters &amp; Lighters</span>Vapes &amp; E-Liquids<span>Tobacco &amp; Cigarettes</span>Hookah &amp; Shisha<span>Chocolates &amp; Munchies</span>Papers, Filters &amp; Lighters
+    </div>
+  </div>
+
+  <section class="wrap">
+    <div class="about">
+      <div class="about__text">
+        <h2>A steady shop by the bus stand</h2>
+        <p>Whether you're catching a bus at Kadamba or just passing through Mundvel, <strong>Smoke World</strong> keeps its shutters up long after most shops close. Locals and travellers alike stop by for a quick restock without a detour.</p>
+        <p>Floor to ceiling stock — cigarette packs and rolling tobacco, disposable vapes and pod systems, hookah setups, chocolates and munchies, plus the small accessories that are easy to run out of: papers, filters, lighters and coals.</p>
+        <p>No frills, fair prices, and someone behind the counter who knows the stock. That's the whole idea.</p>
+      </div>
+      <div class="ticket">
+        <div class="ticket__head">
+          <h3>Smoke World</h3>
+          <span>Vasco · Goa</span>
+        </div>
+        <dl>
+          <div class="ticket__row">
+            <dt>Address</dt>
+            <dd>Koshy Chamber, near Kadamba Bus Stand, Mundvel, Vaddem, Vasco Da Gama, Goa 403802</dd>
+          </div>
+          <div class="ticket__row">
+            <dt>Hours</dt>
+            <dd>Open daily<br>8:00 AM – 12:00 AM</dd>
+          </div>
+          <div class="ticket__row">
+            <dt>Phone</dt>
+            <dd><a href="tel:+917498695893">074986 95893</a></dd>
+          </div>
+          <div class="ticket__row">
+            <dt>Plus Code</dt>
+            <dd>9RXC+VQ Vasco Da Gama, Goa</dd>
+          </div>
+        </dl>
+        <div class="ticket__foot">
+          <a class="btn btn--primary" href="https://wa.me/917498695893" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn--ghost" href="tel:+917498695893">Call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Step Inside</h2>
+        <p>The real counter, the real shelves — a peek at Smoke World before you visit.</p>
+      </div>
+      <div class="gallery-grid">
+        <figure><img src="images/store-1.jpg" alt="Smoke World storefront at night with black and yellow balloon arch"><figcaption>Storefront</figcaption></figure>
+        <figure><img src="images/store-2.jpg" alt="Smoke World shelves stocked with products"><figcaption>Fully Stocked</figcaption></figure>
+        <figure><img src="images/store-3.jpg" alt="Smoke World entrance with neon signage"><figcaption>Entrance</figcaption></figure>
+        <figure><img src="images/store-4.jpg" alt="Inside Smoke World, counter and display shelves"><figcaption>The Counter</figcaption></figure>
+        <figure><img src="images/store-5.jpg" alt="Smoke World interior aisle view"><figcaption>Browse the Aisles</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="products">
+    <div class="section-head">
+      <h2>What's on the shelf</h2>
+      <p>Five counters worth of stock, all under one roof near the bus stand.</p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <svg class="product-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 15h13a3 3 0 0 0 0-6h-1"/><path d="M3 15v3h13v-3"/><circle cx="19" cy="9" r="1.2" fill="currentColor" stroke="none"/></svg>
+        <h3>Vapes &amp; E-Liquids</h3>
+        <p>Disposables, pod systems, replacement coils and a wide range of e-liquid flavours.</p>
+      </div>
+      <div class="product-card">
+        <svg class="product-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="10" width="16" height="4" rx="1"/><path d="M19 11v2"/></svg>
+        <h3>Tobacco &amp; Cigarettes</h3>
+        <p>Local and imported cigarette brands, plus loose and rolling tobacco.</p>
+      </div>
+      <div class="product-card">
+        <svg class="product-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c1 2-1 3-1 5a2 2 0 0 0 4 0"/><path d="M8 21h8"/><path d="M7 11h10l-1 6a3 3 0 0 1-3 3h-2a3 3 0 0 1-3-3z"/></svg>
+        <h3>Hookah &amp; Shisha</h3>
+        <p>Hookah units and spares, flavoured molasses, coals and hoses.</p>
+      </div>
+      <div class="product-card">
+        <svg class="product-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        <h3>Chocolates &amp; Munchies</h3>
+        <p>A sweet stop too — chocolates, snacks and quick bites at the counter.</p>
+      </div>
+      <div class="product-card">
+        <svg class="product-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 4v16M4 8h16"/></svg>
+        <h3>Papers &amp; Accessories</h3>
+        <p>Rolling papers, filters, lighters, grinders and storage pouches.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="visit">
+    <div class="locate">
+      <div class="locate__info">
+        <span class="eyebrow">Find us</span>
+        <h2 style="margin-top:10px;">Near Kadamba Bus Stand</h2>
+        <p>Tucked into Koshy Chamber in Mundvel, Vaddem — a short walk from the bus stand, easy to spot, easier to stop by.</p>
+
+        <div class="locate__point">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <div>
+            Koshy Chamber, near Kadamba Bus Stand, Mundvel, Vaddem, Vasco Da Gama, Goa 403802
+            <small>PLUS CODE · 9RXC+VQ VASCO DA GAMA</small>
+          </div>
+        </div>
+        <div class="locate__point">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <div>
+            Open every day, 8:00 AM – 12:00 AM
+            <small>SUN – SAT · SAME HOURS</small>
+          </div>
+        </div>
+        <div class="locate__point">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><a href="tel:+917498695893">074986 95893</a> — calls and WhatsApp</div>
+        </div>
+
+        <div class="hero__actions" style="justify-content:flex-start; margin-top:8px;">
+          <a class="btn btn--primary" href="https://www.google.com/maps?q=9RXC%2BVQ+Vasco+Da+Gama%2C+Goa" target="_blank" rel="noopener">Open in Google Maps</a>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps?q=Koshy+Chamber+near+Kadamba+Bus+Stand+Mundvel+Vaddem+Vasco+Da+Gama+Goa+403802&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Map showing Smoke World location near Kadamba Bus Stand, Vasco Da Gama, Goa">
+        </iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Smoke World</div>
+        <p style="color:var(--ash-dim); font-size:13px; margin-top:8px; max-width:280px;">Koshy Chamber, near Kadamba Bus Stand, Mundvel, Vaddem, Vasco Da Gama, Goa 403802</p>
+      </div>
+      <div class="footer-contact">
+        <div><a href="tel:+917498695893">074986 95893</a></div>
+        <div><a href="https://wa.me/917498695893" target="_blank" rel="noopener">WhatsApp Smoke World</a></div>
+        <div style="margin-top:6px;">Open daily · 8:00 AM – 12:00 AM</div>
+      </div>
+    </div>
+    <div class="footer-note wrap" style="padding-left:0; padding-right:0;">
+      <span>© <span id="year"></span> Smoke World, Vasco Da Gama</span>
+      <span>For sale to adults 18+ only. Please smoke and vape responsibly.</span>
+    </div>
+  </div>
+</footer>
+<div class="balloons" aria-hidden="true"></div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
